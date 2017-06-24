@@ -1,5 +1,5 @@
 # Warning: node:argon is based off of an odd base image.
-FROM node:argon
+FROM quay.io/aptible/nodejs:v4.2.x
 MAINTAINER Javier Ailbirt.
 
 # Install base dependencies
