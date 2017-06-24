@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         rsync \
         software-properties-common \
         git-core \
-        libpgm-5.1.0
+        libpgm-5.1.0 \
     && rm -rf /var/lib/apt/lists/*
 
 # Install  libzmq3-dev lib which is not listed at wheezy debian packages.
