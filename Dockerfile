@@ -7,16 +7,19 @@ MAINTAINER Javier Ailbirt.
 RUN apt-get update && apt-get install -y -q --no-install-recommends \
         apt-transport-https \
         build-essential \
-        ca-certificates \
-        curl \
-        git \
         libssl-dev \
-        python \
         rsync \
         software-properties-common \
         git-core \
-        wget \
+        libpgm-5.1.0
     && rm -rf /var/lib/apt/lists/*
+
+# Install  libzmq3-dev lib which is not listed at wheezy debian packages.
+RUN wget http://ftp.cl.debian.org/debian/pool/main/z/zeromq3/libzmq3-dev_3.2.3+dfsg-2~bpo70+1_amd64.deb 
+    wget http://ftp.cl.debian.org/debian/pool/main/z/zeromq3/libzmq3_3.2.3+dfsg-2~bpo70+1_amd64.deb
+
+RUN dpkg -i *.deb
+RUN rm -f *.deb
 
 # Install Bitcore
 RUN npm install -g bitcore
