@@ -35,4 +35,5 @@ WORKDIR ${destDir}
 EXPOSE 3001 8333
 
 #RUN bitcored
-CMD ["bitcore","create","mynode","--testnet"]
+#CMD ["bitcore","create","mynode","--testnet"]
+CMD ["./runBitcored.sh"]
