@@ -1,0 +1,24 @@
+version: '2'
+services:
+#About node_modules.
+#By default I override local node_modules directory.
+#This is intended for working without installing dependencies by using development images.
+  
+#Bitcore Full Node
+  bitcore-fullnode:
+    image: quay.io/interactar/bitcorefullnode:bf5e978
+    container_name: theeye-agent
+    networks:
+      - bitcore   
+    external_links:
+      - theeye-supervisor:theeye-supervisor
+    volumes:
+      - ./bitcoreroot:/root
+      - ./bitcore-node.json /root/.bitcore/
+                        
+        #command: bitcore create mynode
+   command: bitcore create mynode --testnet
+
+networks:
+ bitcore:
+     driver: bridge
