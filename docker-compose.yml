@@ -6,17 +6,15 @@ services:
   
 #Bitcore Full Node
   bitcore-fullnode:
-    image: quay.io/interactar/bitcorefullnode:latest
+    image: quay.io/interactar/bitcorefullnode:master
     container_name: bitcore-fullnode
     networks:
       - bitcore   
-    external_links:
-      - theeye-supervisor:theeye-supervisor
     volumes:
       - ./bitcoreroot:/root
                         
     #for prod network > command: bitcore create mynode
-    command: 
+    command: runBitcoredTestnet.sh 
 
 networks:
  bitcore:

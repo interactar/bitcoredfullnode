@@ -32,8 +32,8 @@ RUN rm -rf /usr/local/lib/node_modules/bitcore/node_modules/insight-api/node_mod
 RUN rm -rf ./bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
 
 #create livenet and testnet nodes
-RUN bitcore create mynode
-RUN bitcore create mytestnode --testnet
+#RUN bitcore create mynode
+#RUN bitcore create mytestnode --testnet
 
 ENV destDir /root
 
