@@ -27,6 +27,8 @@ RUN npm install -g bitcore
 #ADD bitcore-node.json /root/.bitcore/
 RUN git clone https://github.com/bitaccess/insight-api.git && cd insight-api
 RUN cp -rf insight-api/lib/* /usr/local/lib/node_modules/bitcore/node_modules/insight-api/lib/
+#Remove bitcore-lib because it's installed twice.
+RUN rm -rf /usr/local/lib/node_modules/bitcore/node_modules/insight-api/node_modules/bitcore-lib
 
 ENV destDir /root
 WORKDIR ${destDir}
