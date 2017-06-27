@@ -6,7 +6,7 @@ services:
   
 #Bitcore Full Node
   bitcore-fullnode:
-    image: quay.io/interactar/bitcorefullnode:bf5e978
+    image: quay.io/interactar/bitcorefullnode:latest
     container_name: theeye-agent
     networks:
       - bitcore   
@@ -14,10 +14,9 @@ services:
       - theeye-supervisor:theeye-supervisor
     volumes:
       - ./bitcoreroot:/root
-      - ./bitcore-node.json /root/.bitcore/
                         
-        #command: bitcore create mynode
-   command: bitcore create mynode --testnet
+    #for prod network > command: bitcore create mynode
+    command: bitcore create mynode --testnet
 
 networks:
  bitcore:
