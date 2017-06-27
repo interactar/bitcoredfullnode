@@ -36,7 +36,7 @@ RUN bitcore create mynode
 RUN bitcore create mytestnode --testnet
 
 #CP start script
-COPY runBitcored.sh /
+COPY ./runBitcored.sh /
 
 ENV destDir /root
 WORKDIR ${destDir}
