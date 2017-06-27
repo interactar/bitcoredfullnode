@@ -1,0 +1,14 @@
+{
+	"network": "livenet",
+	"port": 3001,
+	"services": [
+		"bitcoind",
+		"web"
+	],
+	"servicesConfig": {
+		"bitcoind": {
+			"datadir": "/home/user/.bitcoin",
+			"exec": "/home/user/bitcoin/src/bitcoind"
+		}
+	}
+}

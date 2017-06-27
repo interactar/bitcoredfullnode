@@ -35,12 +35,11 @@ RUN rm -rf ./bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
 RUN bitcore create mynode
 RUN bitcore create mytestnode --testnet
 
-#CP start script
-COPY ./runBitcored.sh /
-COPY ./runBitcoredTestnet.sh /
-
 ENV destDir /root
+
+RUN cd ${destDir}
 WORKDIR ${destDir}
+COPY . ${destDir}
 EXPOSE 3001 8333
 
-CMD ["/runBitcored.sh"]
+CMD ["./runBitcored.sh"]
