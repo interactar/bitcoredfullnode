@@ -1,5 +1,5 @@
 # Warning: node:argon is based off of an odd base image.
-FROM quay.io/aptible/nodejs:v4.2.x
+FROM quay.io/aptible/nodejs:v4.8.x
 MAINTAINER Javier Ailbirt.
 
 #RUN apt-get install libzmq3-dev build-essential
@@ -26,14 +26,20 @@ RUN rm -f *.deb
 RUN npm install -g bitcore
 RUN git clone https://github.com/bitaccess/insight-api.git && cd insight-api
 RUN cp -rf insight-api/lib/* /usr/local/lib/node_modules/bitcore/node_modules/insight-api/lib/
+
 #Remove bitcore-lib because it's installed twice.
 RUN rm -rf /usr/local/lib/node_modules/bitcore/node_modules/insight-api/node_modules/bitcore-lib
 RUN rm -rf ./bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
+
+#create livenet and testnet nodes
+RUN bitcore create mynode
+RUN bitcore create mytestnode --testnet
+
+#CP start script
+RUN cp runBitcored.sh /root/
 
 ENV destDir /root
 WORKDIR ${destDir}
 EXPOSE 3001 8333
 
-#RUN bitcored
-#CMD ["bitcore","create","mynode","--testnet"]
 CMD ["./runBitcored.sh"]
