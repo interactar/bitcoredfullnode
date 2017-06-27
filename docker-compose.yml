@@ -7,7 +7,7 @@ services:
 #Bitcore Full Node
   bitcore-fullnode:
     image: quay.io/interactar/bitcorefullnode:latest
-    container_name: theeye-agent
+    container_name: bitcore-fullnode
     networks:
       - bitcore   
     external_links:
@@ -16,7 +16,7 @@ services:
       - ./bitcoreroot:/root
                         
     #for prod network > command: bitcore create mynode
-    command: bitcore create mynode --testnet
+    command: 
 
 networks:
  bitcore:

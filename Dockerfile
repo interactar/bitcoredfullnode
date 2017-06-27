@@ -36,10 +36,10 @@ RUN bitcore create mynode
 RUN bitcore create mytestnode --testnet
 
 #CP start script
-COPY runBitcored.sh /root/
+COPY runBitcored.sh /
 
 ENV destDir /root
 WORKDIR ${destDir}
 EXPOSE 3001 8333
 
-CMD ["./runBitcored.sh"]
+CMD ["/runBitcored.sh"]
