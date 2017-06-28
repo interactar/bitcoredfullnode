@@ -12,9 +12,10 @@ services:
       - bitcore   
     volumes:
       - ./bitcoreroot:/root
+      - ./runBitcoredTestnet.sh:/runBitcoredTestnet.sh
                         
     #for prod network > command: bitcore create mynode
-    command: runBitcoredTestnet.sh 
+    command: /runBitcoredTestnet.sh 
 
 networks:
  bitcore:
