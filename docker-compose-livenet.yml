@@ -1,0 +1,22 @@
+version: '2'
+services:
+#About node_modules.
+#By default I override local node_modules directory.
+#This is intended for working without installing dependencies by using development images.
+  
+#Bitcore Full Node
+  bitcore-fullnode:
+    image: quay.io/interactar/bitcorefullnode:master
+    container_name: bitcore-fullnode
+    networks:
+      - bitcore   
+    volumes:
+      - ./bitcoreroot:/root
+      - ./runBitcored.sh:/runBitcored.sh
+                        
+    #for prod network > command: bitcore create mynode
+    command: /runBitcored.sh 
+
+networks:
+ bitcore:
+     driver: bridge
