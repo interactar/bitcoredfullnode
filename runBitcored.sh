@@ -44,7 +44,7 @@ if [ -z $2 ];then
    echo Got it, running only a fullnodeservice
 else
    echo "Got it, running with a wallet"
-   cd $nodeName
+   cd /root/$nodeName
    bitcore install bitcore-wallet-service
    bitcore install insight-api
 fi
