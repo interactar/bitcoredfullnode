@@ -30,3 +30,19 @@ cd bitcoredfullnode
 `docker-compose -f docker-compose-livenet.yml up `
 
 
+
+# [[ Wallet! ]]
+If you need to run with a wallet service, just do:
+
+## Testnet
+
+```sh
+ docker-compose -f docker-compose-walletservice.yml up
+
+```
+
+## Livenet
+
+```sh
+ docker-compose -f docker-compose-walletservice-livenet.yml up
+```

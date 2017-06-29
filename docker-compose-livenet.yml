@@ -15,7 +15,7 @@ services:
       - ./runBitcored.sh:/runBitcored.sh
                         
     #for prod network > command: bitcore create mynode
-    command: /runBitcored.sh 
+    command: "/runBitcored.sh livenet"
 
 networks:
  bitcore:
