@@ -4,14 +4,16 @@ nodeName=""
 run () 
 {
   #Fix multiple bitcore-lib versions installed by npm.
-  rm -rf /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
-  ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
-  rm -rf ./insight-api/node_modules/bitcore-lib
-  rm -rf ./bitcore-wallet-service/node_modules/bitcore-lib
-  rm -rf /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib ./insight-api/node_modules/bitcore-lib
-  rm -rf /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib ./bitcore-wallet-service/node_modules/bitcore-lib
+#  rm -rf /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
+#  ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
+#  rm -rf /root/$nodeName/insight-api/node_modules/bitcore-lib
+#  rm -rf /root/$nodeName/bitcore-wallet-service/node_modules/bitcore-lib
+#  rm -rf /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /root/$nodeName/insight-api/node_modules/bitcore-lib
+#  rm -rf /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /root/$nodeName/bitcore-wallet-service/node_modules/bitcore-lib
 
-  echo "path $(pwd)"
+  
+  cd /root/$nodeName
+  echo "Env $nodeName path $(pwd)"
   bitcored
 }
 case $1 in
@@ -20,9 +22,10 @@ case $1 in
                     nodeName=mynode
                     if [ -d $nodeName ];then  
                     	echo node exists.
-                    	cd $nodeName
+                    	cd /root/$nodeName
                     else
                     	echo new node, creating a new one.
+                    	echo bitcore create $nodeName 
                     	bitcore create $nodeName 
                     fi;;
 	"testnet" )
@@ -30,9 +33,10 @@ case $1 in
                     nodeName=mytestnode
                     if [ -d $nodeName ];then  
                     	echo node exists.
-                    	cd $nodeName
+                    	cd /root/$nodeName
                     else
                     	echo new node, creating a new one.
+                    	echo bitcore create $nodeName --testnet
                     	bitcore create $nodeName --testnet
                     fi;;
 	* ) 
