@@ -1,0 +1,32 @@
+version: '2'
+services:
+
+#Bitcore Full Node
+  bitcore-fullnode:
+    image: quay.io/interactar/bitcorefullnode:master
+    container_name: bitcore-fullnode
+    links:
+      - bitcore-db
+    networks:
+      - bitcore   
+    #restart: always
+    volumes:
+      - ./bitcoreroot:/root
+      - ./runBitcored.sh:/runBitcored.sh
+                        
+    #for prod network > command: bitcore create mynode
+    command: "/runBitcored.sh testnet wallet" 
+
+  bitcore-db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - /srv/docker/mongodb:/data/db
+    networks:
+      - bitcore   
+    #restart: always
+
+networks:
+ bitcore:
+     driver: bridge
