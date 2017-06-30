@@ -6,7 +6,7 @@ services:
   
 #Bitcore Full Node
   bitcore-fullnode:
-    image: quay.io/interactar/bitcorefullnode:development
+    image: quay.io/interactar/bitcorefullnode:master
     container_name: bitcore-fullnode
     networks:
       - bitcore   

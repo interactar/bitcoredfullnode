@@ -3,7 +3,7 @@ services:
 
 #Bitcore Full Node
   bitcore-fullnode:
-    image: quay.io/interactar/bitcorefullnode:master
+    image: quay.io/interactar/bitcorefullnode:development
     container_name: bitcore-fullnode
     links:
       - bitcore-db
@@ -16,6 +16,20 @@ services:
                         
     #for prod network > command: bitcore create mynode
     command: "/runBitcored.sh testnet wallet" 
+ 
+  #Bitcore Wallet Service
+  wallet-service:
+    image: quay.io/interactar/bitcorewalletservice:master
+    ports:
+      - "3232:3232"
+    volumes:
+      - ./walletcfg/config.js:/bws/config.js
+        #  volumes_from:
+        #    - db
+    networks:
+      - bitcore   
+    links:
+      - bitcore-db
 
   bitcore-db:
     image: mongo:latest

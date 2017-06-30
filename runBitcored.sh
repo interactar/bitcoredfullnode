@@ -4,12 +4,14 @@ nodeName=""
 run () 
 {
   #Fix multiple bitcore-lib versions installed by npm.
-#  rm -rf /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
-#  ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
-#  rm -rf /root/$nodeName/insight-api/node_modules/bitcore-lib
-#  rm -rf /root/$nodeName/bitcore-wallet-service/node_modules/bitcore-lib
-#  rm -rf /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /root/$nodeName/insight-api/node_modules/bitcore-lib
-#  rm -rf /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /root/$nodeName/bitcore-wallet-service/node_modules/bitcore-lib
+  rm -rf /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
+  ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
+  rm -rf /root/$nodeName/insight-api/node_modules/bitcore-lib
+  ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /root/$nodeName/insight-api/node_modules/bitcore-lib
+
+#  rm -rf /root/$nodeName/node_modules/bitcore-wallet-service/node_modules/bitcore-lib
+#  ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /root/$nodeName/node_modules/bitcore-wallet-service/node_modules/bitcore-lib
+
 
   
   cd /root/$nodeName
@@ -44,13 +46,13 @@ case $1 in
 esac
 
 
-if [ -z $2 ];then
-   echo Got it, running only a fullnodeservice
-else
-   echo "Got it, running with a wallet"
-   cd /root/$nodeName
-   bitcore install bitcore-wallet-service
-   bitcore install insight-api
-fi
+#if [ -z $2 ];then
+#   echo Got it, running only a fullnodeservice
+#else
+#   echo "Got it, running with a wallet"
+#   cd /root/$nodeName
+#   bitcore install bitcore-wallet-service
+#   bitcore install insight-api
+#fi
 
 run
