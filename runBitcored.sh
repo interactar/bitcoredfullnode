@@ -4,10 +4,10 @@ nodeName=""
 run () 
 {
   #Fix multiple bitcore-lib versions installed by npm.
-  rm -rf /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
+  #rm -rf /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
   ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
-  rm -rf /root/$nodeName/insight-api/node_modules/bitcore-lib
-  ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /root/$nodeName/insight-api/node_modules/bitcore-lib
+  #rm -rf /root/$nodeName/insight-api/node_modules/bitcore-lib
+  #ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /root/$nodeName/insight-api/node_modules/bitcore-lib
 
 #  rm -rf /root/$nodeName/node_modules/bitcore-wallet-service/node_modules/bitcore-lib
 #  ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /root/$nodeName/node_modules/bitcore-wallet-service/node_modules/bitcore-lib

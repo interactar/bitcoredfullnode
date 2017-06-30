@@ -3,7 +3,7 @@ services:
 
 #Bitcore Full Node
   bitcore-fullnode:
-    image: quay.io/interactar/bitcorefullnode:development
+    image: quay.io/interactar/bitcorefullnode:master
     container_name: bitcore-fullnode
     links:
       - bitcore-db
@@ -24,12 +24,15 @@ services:
       - "3232:3232"
     volumes:
       - ./walletcfg/config.js:/bws/config.js
+      - ./walletLogs:/bws/logs
+      - ./runWalletService.sh:/runWalletService.sh
         #  volumes_from:
         #    - db
     networks:
       - bitcore   
     links:
       - bitcore-db
+    command: '/runWalletService.sh'
 
   bitcore-db:
     image: mongo:latest
