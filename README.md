@@ -4,7 +4,7 @@
 
 ![alt text](https://s3.minijuegosgratis.com/media/video-collection-img/video-collection-trollface-thumb.jpg)
 
-* 2- [Optional] unless you don't mind to run docker-compose by using sudoer, please grant your current user docker group permission:
+* 2- [Optional] unless you don't mind to run docker-compose by using ``` sudo```, please grant your current user with docker group permission:
 ```sh
 sudo gpasswd -a $(whoami) docker 
 ```
@@ -32,8 +32,8 @@ cd bitcoredfullnode
 
 
 
-# [[ Wallet! ]]
-If you need to run bitcored with a wallet service, just do:
+#  Wallet
+If you need to run bitcored with a wallet service, please run:
 
 ## Testnet
 
