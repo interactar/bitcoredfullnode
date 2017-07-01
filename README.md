@@ -46,3 +46,8 @@ If you need to run bitcored with a wallet service, just do:
 ```sh
  docker-compose -f docker-compose-walletservice-livenet.yml up
 ```
+
+# F.A.Q
+
+* How to start working with testnet?
+get some bitcoin testnet from https://testnet.manu.backend.hamburg/faucet
