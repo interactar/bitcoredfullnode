@@ -32,7 +32,7 @@ cd bitcoredfullnode
 
 
 # [[ Wallet! ]]
-If you need to run with a wallet service, just do:
+If you need to run bitcored with a wallet service, just do:
 
 ## Testnet
 

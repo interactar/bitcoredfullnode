@@ -15,7 +15,24 @@ services:
       - ./runBitcored.sh:/runBitcored.sh
                         
     #for prod network > command: bitcore create mynode
-    command: "/runBitcored.sh livenet wallet" 
+    command: "/runBitcored.sh livenet" 
+ 
+  #Bitcore Wallet Service
+  wallet-service:
+    image: quay.io/interactar/bitcorewalletservice:master
+    ports:
+      - "3232:3232"
+    volumes:
+      - ./walletcfg/config.js:/bws/config.js
+      - ./walletLogs:/bws/logs
+      - ./runWalletService.sh:/runWalletService.sh
+        #  volumes_from:
+        #    - db
+    networks:
+      - bitcore   
+    links:
+      - bitcore-db
+    command: '/runWalletService.sh'
 
   bitcore-db:
     image: mongo:latest
