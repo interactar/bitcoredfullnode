@@ -1,7 +1,7 @@
 # [[ PREREQUISITES ]] 
 
 * 1- download/install dokcer 1.12+ and docker-compose 1.8+
-![alt text](http://www.pngall.com/wp-content/uploads/2016/05/Trollface-PNG.png)
+![alt text](https://s3.minijuegosgratis.com/media/video-collection-img/video-collection-trollface-thumb.jpg)
 
 * 2- [Optional] unless you don't mind to run docker-compose by using sudoer, please grant your current user docker group permission:
 ```sh
