@@ -36,6 +36,7 @@ cd bitcoredfullnode
 If you need to run bitcored with a wallet service, please run:
 
 ## Testnet
+This flavor comes with copay up and running, that way you can test your overall setup by browsing http://0.0.0.0:8081
 
 ```sh
  docker-compose -f docker-compose-walletservice.yml up

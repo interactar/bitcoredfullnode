@@ -20,6 +20,7 @@ services:
   #Bitcore Wallet Service
   wallet-service:
     image: quay.io/interactar/bitcorewalletservice:master
+    container_name: wallet-service
     ports:
       - "3232:3232"
     volumes:
@@ -43,6 +44,17 @@ services:
     networks:
       - bitcore   
     #restart: always
+    #
+  #Bitcore Copay and BWS CLI
+  copayAndBWSClient:
+    image: quay.io/interactar/copayandbwsclient
+    container_name: copay-bwscli
+    ports:
+      - "8100:8100"
+#   volumes:
+#     - ./copaycfg/externalServices.json:/copay/externalServices.json
+    networks:
+      - bitcore   
 
 networks:
  bitcore:
