@@ -6,9 +6,9 @@ else
 	echo new node, creating one.
 	bitcore create mynode
 	cd mynode
-	bitcore-node install insight-api
-	bitcore-node install insight-ui
-	bitcore-node start
+	bitcore install insight-api
+	bitcore install insight-ui
+	#bitcore-node start
 	# bitcore create mytestnode --testnet
 fi
 #Weird duplicate entry caused by npm...
