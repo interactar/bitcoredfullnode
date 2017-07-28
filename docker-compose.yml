@@ -13,9 +13,15 @@ services:
     volumes:
       - ./bitcoreroot:/root
       - ./runBitcored.sh:/runBitcored.sh
+    logging:
+        driver: json-file
+        options:
+           max-size: "50m"
                         
+    restart: always
     #for prod network > command: bitcore create mynode
     command: "/runBitcored.sh testnet"
+
 
 networks:
  bitcore:

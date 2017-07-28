@@ -1,14 +1,18 @@
 #!/bin/bash
-if [ -d mynode ];then  
+nodeName="mynode"
+net="livenet"
+if [ $1 == "testnet" ]; then
+	nodeName="mytestnode"
+	net="testnet"
+fi	
+
+if [ -d $nodeName ];then  
 	echo node exists !!!, Using It
-	cd mynode
+	cd $nodeName
 else
-	echo new node, creating one.
-	bitcore create mynode
-	# bitcore create mytestnode --testnet
+	bitcore create $nodeName --$net
 fi
 #Weird duplicate entry caused by npm...
 rm -rf /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
-cd /root/mynode
+cd /root/$nodeName
 bitcored
-
