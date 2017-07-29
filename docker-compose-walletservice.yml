@@ -15,12 +15,17 @@ services:
       - ./runBitcored.sh:/runBitcored.sh
                         
     #for prod network > command: bitcore create mynode
-    command: "/runBitcored.sh testnet wallet" 
+    restart: always
+    #Logging
+    logging:
+        driver: json-file
+        options:
+           max-size: "50m"
+    command: "/runBitcored.sh livenet" 
  
   #Bitcore Wallet Service
   wallet-service:
     image: quay.io/interactar/bitcorewalletservice:master
-    container_name: wallet-service
     ports:
       - "3232:3232"
     volumes:

@@ -15,6 +15,12 @@ services:
       - ./runBitcored.sh:/runBitcored.sh
                         
     #for prod network > command: bitcore create mynode
+    restart: always
+    #Logging
+    logging:
+        driver: json-file
+        options:
+           max-size: "50m"
     command: "/runBitcored.sh livenet" 
  
   #Bitcore Wallet Service

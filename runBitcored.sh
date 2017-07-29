@@ -1,4 +1,5 @@
 #!/bin/bash
+> /root/mynode/data/bitcoind.pid
 nodeName="mynode"
 net="livenet"
 if [ $1 == "testnet" ]; then
