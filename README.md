@@ -8,6 +8,16 @@ sudo gpasswd -a $(whoami) docker
 ```
 * reboot your computer.
 
+# [[ INTRO ]]
+
+This orchestation uses three dockers:
+
+*The Public Node which has enabled insight web/api, and https certs and is used to verify transactions from outside.
+*The Private Node which has a limited network access and limited plugins for security purposes.
+*The Wallet Which is the BWS service and should be configured to talk with your public NODE.
+
+You are able to run all this dockers in one server, also you can run each docker-compose in a different server.
+
 # [[ INSTALATION ]] 
 
 * 1- clone this repo
