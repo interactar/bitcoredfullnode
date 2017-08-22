@@ -1,0 +1,33 @@
+{
+  "network": "livenet",
+  "port": 3001,
+  "https": true,
+  "httpsOptions": {
+    "key": "./xxxxxxxxx.key",
+    "cert": "./xxxxxxxxx.pem"
+  },
+  "services": [
+    "bitcoind",
+    "insight-api",
+    "insight-ui",
+    "web"
+  ],
+  "servicesConfig": {
+    "bitcoind": {
+      "spawn": {
+        "datadir": "./data",
+        "exec": "/usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/bin/bitcoind"
+      }
+    },
+    "insight-api": {
+      "disableRateLimiter": true
+    },
+    "web": {
+      "jsonRequestLimit": "200000000kb"
+    },
+    "address": {
+    "maxInputsQueryLength": 500000,
+    "maxOutputsQueryLength": 500000
+    }
+  }
+}

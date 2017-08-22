@@ -12,6 +12,7 @@ services:
     #restart: always
     volumes:
       - ./bitcoreroot:/root
+      - ./nodecfg/private_bitcore-node.json:/root/mynode/bitcore-node.json
       - ./runBitcored.sh:/runBitcored.sh
                         
     #for prod network > command: bitcore create mynode

@@ -12,6 +12,7 @@ services:
       - bitcore   
     volumes:
       - ./bitcoreroot:/root
+      - ./nodecfg/private_bitcore-node.json:/root/mynode/bitcore-node.json
       - ./runBitcored.sh:/runBitcored.sh
                         
     restart: always

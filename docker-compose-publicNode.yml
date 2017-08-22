@@ -14,6 +14,7 @@ services:
       - "3001:3001"
     volumes:
       - ./bitcoreroot:/root
+      - ./nodecfg/public_bitcore-node.json:/root/mynode/bitcore-node.json
       - ./runBitcoredPublicNode.sh:/runBitcoredPublicNode.sh
                         
     #for prod network > command: bitcore create mynode
