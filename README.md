@@ -2,8 +2,6 @@
 
 * 1- download/install dokcer 1.12+ and docker-compose 1.8+
 
-![alt text](https://s3.minijuegosgratis.com/media/video-collection-img/video-collection-trollface-thumb.jpg)
-
 * 2- [Optional] unless you don't mind to run docker-compose by using ``` sudo```, please grant your current user with docker group permission:
 ```sh
 sudo gpasswd -a $(whoami) docker 
@@ -22,6 +20,8 @@ git clone git@github.com:interactar/bitcoredfullnode.git
 cd bitcoredfullnode
 ```
 # [[ RUN! ]]
+
+## Private Full Node
 ## Testnet
 
 `docker-compose up `
@@ -30,6 +30,20 @@ cd bitcoredfullnode
 
 `docker-compose -f docker-compose-livenet.yml up `
 
+# Public Full Node
+## Testnet
+
+ Edit docker-compose-publicNode.yml file by replacing ```command: "/runBitcoredPublicNode.sh livenet"``` setting with ```command: "/runBitcoredPublicNode.sh testnet"```
+`docker-compose -f docker-compose-publicNode.yml up `
+
+## Livenet
+Before you run,please place your pem and key files under ./bitcoreroot and then configure nodecfg/public_bitcore-node.json settings to fit your key and pem files:
+   "key": "./xxxxxxxxx.key",
+   "cert": "./xxxxxxxxx.pem"
+
+
+
+`docker-compose -f docker-compose-publicNode.yml up `
 
 
 #  Wallet
@@ -44,6 +58,8 @@ This flavor comes with copay up and running, that way you can test your overall 
 ```
 
 ## Livenet
+###Before you run, please configure walletcfg/config.js settings to fit your setup:
+You should modify the "blockchainExplorerOpts" block by replacing the ```url: 'https://xxxxxxxxxxxxx.com:3001/insight'``` setting with your public full node url address.
 
 ```sh
  docker-compose -f docker-compose-walletservice-livenet.yml up
