@@ -42,7 +42,8 @@ ENV destDir /root
 RUN cd ${destDir}
 WORKDIR ${destDir}
 #create livenet and testnet nodes
-RUN bitcore create mynode --livenet
+#RUN bitcore create mynode --testnet
+RUN bitcore create mynode 
 # Install API and Web.
 RUN bitcore install insight-api
 RUN bitcore install insight-ui
