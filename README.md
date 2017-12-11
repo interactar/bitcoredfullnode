@@ -1,6 +1,6 @@
 # [[ PREREQUISITES ]] 
 
-* 1- download/install dokcer 1.12+ and docker-compose 1.8+
+* 1- download/install docker 1.12+ and docker-compose 1.8+
 
 * 2- [Optional] unless you don't mind to run docker-compose by using ``` sudo```, please grant your current user with docker group permission:
 ```sh
@@ -12,11 +12,13 @@ sudo gpasswd -a $(whoami) docker
 
 This orchestation uses three dockers:
 
-*The Public Node which has enabled insight web/api, and https certs and is used to verify transactions from outside.
+*The Public Node which has enabled insight web/api, with out https certs.
 *The Private Node which has a limited network access and limited plugins for security purposes.
 *The Wallet Which is the BWS service and should be configured to talk with your public NODE.
 
-You are able to run all this dockers in one server, also you can run each docker-compose in a different server.
+You are able to run all this dockers in one server, also you can run each docker-compose on a different server.
+
+Each docker-compose works with different branches, master is for livenet and testnet well is for testnet.
 
 # [[ INSTALATION ]] 
 
@@ -38,22 +40,26 @@ cd bitcoredfullnode
 
 ## Livenet
 
-`docker-compose -f docker-compose-livenet.yml up `
+```sh
+docker-compose -f docker-compose-livenet.yml up
+```
 
 # Public Full Node
 ## Testnet
 
- Edit docker-compose-publicNode.yml file by replacing ```command: "/runBitcoredPublicNode.sh livenet"``` setting with ```command: "/runBitcoredPublicNode.sh testnet"```
-`docker-compose -f docker-compose-publicNode.yml up `
+```sh
+docker-compose -f docker-compose-publicNode.yml up 
+```
 
 ## Livenet
+```sh
+docker-compose -f docker-compose-publicNode-livenet.yml up
+```
+ 
+[ OPTIONAL ]
 Before you run,please place your pem and key files under ./bitcoreroot and then configure nodecfg/public_bitcore-node.json settings to fit your key and pem files:
    "key": "./xxxxxxxxx.key",
    "cert": "./xxxxxxxxx.pem"
-
-
-
-`docker-compose -f docker-compose-publicNode.yml up `
 
 
 #  Wallet
@@ -64,7 +70,6 @@ This flavor comes with copay up and running, that way you can test your overall 
 
 ```sh
  docker-compose -f docker-compose-walletservice.yml up
-
 ```
 
 ## Livenet
