@@ -29,16 +29,23 @@ services:
     image: quay.io/interactar/bitcorewalletservice:master
     ports:
       - "3232:3232"
+    networks:
+      - bitcore
     volumes:
       - ./walletcfg/config.js:/bws/config.js
       - ./walletLogs:/bws/logs
       - ./runWalletService.sh:/runWalletService.sh
         #  volumes_from:
         #    - db
-    networks:
-      - bitcore   
-    links:
-      - bitcore-db
+    restart: always
+    #Logging
+    logging:
+        driver: json-file
+        options:
+           max-size: "50m"
+    command: "/runBitcored.sh livenet" 
+#    links:
+#      - bitcore-db
     command: '/runWalletService.sh'
 
   bitcore-db:

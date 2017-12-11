@@ -1,15 +1,8 @@
 {
-  "network": "livenet",
+  "network": "testnet",
   "port": 3001,
-//  "https": true,
-//  "httpsOptions": {
-//    "key": "./xxxxxxxxx.key",
-//    "cert": "./xxxxxxxxx.pem"
-//  },
   "services": [
     "bitcoind",
-    "insight-api",
-    "insight-ui",
     "web"
   ],
   "servicesConfig": {

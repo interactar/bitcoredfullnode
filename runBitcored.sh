@@ -1,5 +1,4 @@
 #!/bin/bash
-> /root/mynode/data/bitcoind.pid
 nodeName="mynode"
 net="livenet"
 if [ $1 == "testnet" ]; then
@@ -14,6 +13,6 @@ else
 	bitcore create $nodeName --$net
 fi
 #Weird duplicate entry caused by npm...
-rm -rf /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
+> /root/$nodeName/data/bitcoind.pid
 cd /root/$nodeName
 bitcored

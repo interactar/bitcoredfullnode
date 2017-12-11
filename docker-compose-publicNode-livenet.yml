@@ -13,18 +13,12 @@ services:
     ports:
       - "3000:3001"
     volumes:
-      - ./bitcoreroot/mytestnode:/root/mytestnode/data
-      - ./nodecfg/private_bitcore-testnet-node.json:/root/mynode/bitcore-node.json
-      - ./runBitcored.sh:/runBitcored.sh
-    logging:
-        driver: json-file
-        options:
-           max-size: "50m"
+      - ./bitcoreroot:/root
+      - ./nodecfg/public_bitcore-node.json:/root/mynode/bitcore-node.json
+      - ./runBitcoredPublicNode.sh:/runBitcoredPublicNode.sh
                         
-    restart: always
     #for prod network > command: bitcore create mynode
-    command: "/runBitcored.sh testnet"
-
+    command: "/runBitcoredPublicNode.sh livenet"
 
 networks:
  bitcore:
