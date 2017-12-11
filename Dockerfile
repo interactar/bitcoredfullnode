@@ -27,6 +27,9 @@ RUN rm -f *.deb
 RUN npm install -g bitcore
 RUN git clone https://github.com/bitaccess/insight-api.git && cd insight-api
 RUN cp -rf insight-api/lib/* /usr/local/lib/node_modules/bitcore/node_modules/insight-api/lib/
+# Install API and Web.
+RUN bitcore install insight-api
+RUN bitcore install insight-ui
 
 #Remove bitcore-lib because it's installed twice.
 RUN rm -rf /usr/local/lib/node_modules/bitcore/node_modules/insight-api/node_modules/bitcore-lib
@@ -42,10 +45,6 @@ ENV destDir /root
 RUN cd ${destDir}
 WORKDIR ${destDir}
 #create livenet and testnet nodes
-RUN bitcore create mynode
-RUN bitcore create mytestnode --testnet
-RUN bitcore install insight-api
-RUN bitcore install insight-ui
 COPY . ${destDir}
 EXPOSE 3001 8333 18333
 

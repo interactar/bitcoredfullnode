@@ -13,7 +13,7 @@ services:
     ports:
       - "3000:3001"
     volumes:
-      - ./bitcoreroot/mytestnode:/root/mytestnode/data
+      - ./bitcoreroot:/root
       - ./nodecfg/public_bitcore-node.json:/root/mynode/bitcore-node.json
       - ./runBitcored.sh:/runBitcored.sh
     logging:
