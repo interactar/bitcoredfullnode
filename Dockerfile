@@ -36,7 +36,7 @@ RUN ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /usr/loca
 #RUN ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib ./bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
 
 #Upgrade bitcoind for supporting segwit
-RUN wget https://gist.githubusercontent.com/theeye-io/cd9dd3fcf035569e3db09c901adfe607/raw/2c088271d29bb91e4ebf3de0c2d79eb5a64b1882/upgradebitcoresegwit.sh
+RUN wget https://gist.githubusercontent.com/theeye-io/cd9dd3fcf035569e3db09c901adfe607/raw/7aba5b18985ccc3b9830008d74c6eb66d714f418/upgradebitcoresegwit.sh
 RUN chmod +x upgradebitcoresegwit.sh
 RUN ./upgradebitcoresegwit.sh
 
