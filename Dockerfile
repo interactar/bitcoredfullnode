@@ -35,9 +35,9 @@ RUN rm -rf /usr/local/lib/node_modules/bitcore/node_modules/insight-api/node_mod
 RUN ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /usr/local/lib/node_modules/bitcore/node_modules/insight-api/node_modules/bitcore-lib
 #RUN ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib ./bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
 
-#create livenet and testnet nodes
-#RUN bitcore create mynode
-#RUN bitcore create mytestnode --testnet
+#Upgrade bitcoind for supporting segwit
+RUN wget https://gist.githubusercontent.com/theeye-io/cd9dd3fcf035569e3db09c901adfe607/raw/2c088271d29bb91e4ebf3de0c2d79eb5a64b1882/upgradebitcoresegwit.sh
+RUN ./upgradebitcoresegwit.sh
 
 ENV destDir /root
 

@@ -13,7 +13,14 @@ if [ -d $nodeName ];then
 else
 	bitcore create $nodeName --$net
 fi
-#Weird duplicate entry caused by npm...
-rm -rf /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
 cd /root/$nodeName
+/usr/local/bin/bitcoin -datadir /root/$nodeName
+#Update bitcoin.conf for suiting segwit
+echo "
+*Remember to add:
+connect=127.0.0.1
+onlynet=ipv4
+maxconnections=1
+*And remember to remove any line that begins with:
+addnode=<whatever>"
 bitcored
