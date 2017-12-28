@@ -16,11 +16,12 @@ fi
 cd /root/$nodeName
 /usr/local/bin/bitcoin -datadir /root/$nodeName
 #Update bitcoin.conf for suiting segwit
-echo "
-*Remember to add:
+grep connect.127.0.0.1 /root/$nodeName/data/bitcoin.conf
+if [ $? -ne 0 ];then
+echo "#Added for supporing Segwit
 connect=127.0.0.1
 onlynet=ipv4
-maxconnections=1
-*And remember to remove any line that begins with:
-addnode=<whatever>"
+maxconnections=1" > /root/$nodeName/data/bitcoin.conf
+echo "Removing addnode sentence if its found"
+sed -i s/addnode.*//g /root/$nodeName/data/bitcoin.conf 
 bitcored
