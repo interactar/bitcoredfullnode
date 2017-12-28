@@ -5,6 +5,9 @@ net="livenet"
 if [ $1 == "testnet" ]; then
 	nodeName="mytestnode"
 	net="testnet"
+	bitcore="node --debug $(which bitcored) # use inspector to remote debuggin"
+else
+	bitcore="bitcored"
 fi	
 
 if [ -d $nodeName ];then  
@@ -24,4 +27,4 @@ onlynet=ipv4
 maxconnections=1" > /root/$nodeName/data/bitcoin.conf
 echo "Removing addnode sentence if its found"
 sed -i s/addnode.*//g /root/$nodeName/data/bitcoin.conf 
-bitcored
+$bitcore
