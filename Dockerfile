@@ -1,5 +1,5 @@
 # Warning: node:argon is based off of an odd base image.
-FROM quay.io/aptible/nodejs:v4.6.x
+FROM quay.io/aptible/nodejs:v8.2.x
 MAINTAINER Javier Ailbirt.
 
 #RUN apt-get install libzmq3-dev build-essential
@@ -42,7 +42,6 @@ RUN chmod +x upgradebitcoresegwit.sh
 RUN ./upgradebitcoresegwit.sh
 
 #Remove symblink bitcoind->1.12 native and replace it for a 1.4.15 
-RUN /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/bin/bitcoind
 RUN ln -s /usr/local/bin/bitcoin-1.4.15/bin/bitcoind /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/bin/bitcoind 
 
 ENV destDir /root
