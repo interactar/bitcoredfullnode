@@ -1,5 +1,5 @@
 # Warning: node:argon is based off of an odd base image.
-FROM quay.io/aptible/nodejs:v4.6.x
+FROM quay.io/aptible/nodejs:v8.2.x
 MAINTAINER Javier Ailbirt.
 
 #RUN apt-get install libzmq3-dev build-essential
@@ -29,16 +29,21 @@ RUN git clone https://github.com/bitaccess/insight-api.git && cd insight-api
 RUN cp -rf insight-api/lib/* /usr/local/lib/node_modules/bitcore/node_modules/insight-api/lib/
 
 #Remove bitcore-lib because it's installed twice.
-RUN rm -rf /usr/local/lib/node_modules/bitcore/node_modules/insight-api/node_modules/bitcore-lib
+#RUN rm -rf /usr/local/lib/node_modules/bitcore/node_modules/insight-api/node_modules/bitcore-lib
 #RUN rm -rf ./bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
 # Create Symblinks due to diferent versions of bitcore-lib installed by bitcore..
-RUN ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /usr/local/lib/node_modules/bitcore/node_modules/insight-api/node_modules/bitcore-lib
+#RUN ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /usr/local/lib/node_modules/bitcore/node_modules/insight-api/node_modules/bitcore-lib
 #RUN ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib ./bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
 
+
 #Upgrade bitcoind for supporting segwit
-RUN wget https://gist.githubusercontent.com/theeye-io/cd9dd3fcf035569e3db09c901adfe607/raw/7aba5b18985ccc3b9830008d74c6eb66d714f418/upgradebitcoresegwit.sh
+RUN wget https://gist.githubusercontent.com/theeye-io/cd9dd3fcf035569e3db09c901adfe607/raw/f4dd2fd5433a733d95f025d0f615de1a3c6798d5/upgradebitcoresegwit.sh
 RUN chmod +x upgradebitcoresegwit.sh
 RUN ./upgradebitcoresegwit.sh
+
+#Remove symblink bitcoind->1.12 native and replace it for a 1.4.15 
+RUN /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/bin/bitcoind
+RUN ln -s /usr/local/bin/bitcoin-1.4.15/bin/bitcoind /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/bin/bitcoind 
 
 ENV destDir /root
 
