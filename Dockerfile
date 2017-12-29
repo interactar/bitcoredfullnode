@@ -29,10 +29,10 @@ RUN git clone https://github.com/bitaccess/insight-api.git && cd insight-api && 
 RUN cp -rf insight-api/lib/* /usr/local/lib/node_modules/bitcore/node_modules/insight-api/lib/
 
 #Remove bitcore-lib because it's installed twice.
-##RUN rm -rf /usr/local/lib/node_modules/bitcore/node_modules/insight-api/node_modules/bitcore-lib
-##RUN rm -rf ./bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
+RUN rm -rf /usr/local/lib/node_modules/bitcore/node_modules/insight-api/node_modules/bitcore-lib
+RUN rm -rf ./bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
 # Create Symblinks due to diferent versions of bitcore-lib installed by bitcore..
-##RUN ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /usr/local/lib/node_modules/bitcore/node_modules/insight-api/node_modules/bitcore-lib
+RUN ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /usr/local/lib/node_modules/bitcore/node_modules/insight-api/node_modules/bitcore-lib
 #RUN ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib ./bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
 
 
