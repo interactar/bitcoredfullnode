@@ -24,7 +24,7 @@ RUN dpkg -i *.deb
 RUN rm -f *.deb
 
 # Install Bitcore
-RUN npm install -g bitcore
+RUN npm install -g --unsafe-perm=true bitcore
 RUN git clone https://github.com/bitaccess/insight-api.git && cd insight-api && npm install
 RUN cp -rf insight-api/lib/* /usr/local/lib/node_modules/bitcore/node_modules/insight-api/lib/
 
