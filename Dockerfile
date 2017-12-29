@@ -41,9 +41,9 @@ RUN wget https://gist.githubusercontent.com/theeye-io/cd9dd3fcf035569e3db09c901a
 RUN chmod +x upgradebitcoresegwit.sh
 RUN ./upgradebitcoresegwit.sh
 
-#Remove symblink bitcoind->1.12 native and replace it for a 1.4.15 
+#Remove symblink bitcoind->1.12 native and replace it for a 1.14.5 
 RUN rm /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/bin/bitcoind 
-RUN ln -s /usr/local/bin/bitcoin-1.14.15/bin/bitcoind /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/bin/bitcoind 
+RUN ln -s /usr/local/bin/bitcoin-1.14.5/bin/bitcoind /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/bin/bitcoind 
 
 ENV destDir /root
 
