@@ -37,13 +37,12 @@ RUN ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /usr/loca
 
 
 #Upgrade bitcoind for supporting segwit
-RUN wget https://gist.githubusercontent.com/theeye-io/cd9dd3fcf035569e3db09c901adfe607/raw/f4dd2fd5433a733d95f025d0f615de1a3c6798d5/upgradebitcoresegwit.sh
+RUN wget https://gist.githubusercontent.com/theeye-io/cd9dd3fcf035569e3db09c901adfe607/raw/381763a1cea103949dacf67339a95e511d2b64fe/upgradebitcoresegwit.sh
 RUN chmod +x upgradebitcoresegwit.sh
 RUN ./upgradebitcoresegwit.sh
 
 #Remove symblink bitcoind->1.12 native and replace it for a 1.4.15 
 RUN rm /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/bin/bitcoind 
-RUN mv bitcoin-1.4.15 /usr/local/bin/bitcoin-1.4.15
 RUN ln -s /usr/local/bin/bitcoin-1.4.15/bin/bitcoind /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/bin/bitcoind 
 
 ENV destDir /root
