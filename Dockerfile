@@ -33,13 +33,13 @@ RUN npm install -g --unsafe-perm=true bitcore
 #RUN git clone https://github.com/bitaccess/insight-api.git && cd insight-api && npm install
 #RUN cp -rf insight-api/lib/* /usr/local/lib/node_modules/bitcore/node_modules/insight-api/lib/
 
-#15-1 PRUEBO A VER SI SE DEJA DE JODER #Remove bitcore-lib because it's installed twice.
-#15-1 PRUEBO A VER SI SE DEJA DE JODER #RUN rm -rf /usr/lib/node_modules/bitcore/node_modules/insight-api/node_modules/bitcore-lib
-#15-1 PRUEBO A VER SI SE DEJA DE JODER #RUN rm -rf /usr/lib/node_modules/bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
-#15-1 PRUEBO A VER SI SE DEJA DE JODER #RUN rm -rf /usr/lib/node_modules/bitcore/node_modules/bitcore-message/node_modules/bitcore-lib
-#15-1 PRUEBO A VER SI SE DEJA DE JODER 
-#15-1 PRUEBO A VER SI SE DEJA DE JODER # Create Symblinks due to diferent versions of bitcore-lib installed by bitcore..
-#15-1 PRUEBO A VER SI SE DEJA DE JODER #RUN ln -s /usr/lib/node_modules/bitcore/node_modules/bitcore-lib /usr/lib/node_modules/bitcore/node_modules/insight-api/node_modules/bitcore-lib
+#Remove bitcore-lib because it's installed twice.
+RUN rm -rf /usr/lib/node_modules/bitcore/node_modules/insight-api/node_modules/bitcore-lib
+RUN rm -rf /usr/lib/node_modules/bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
+RUN rm -rf /usr/lib/node_modules/bitcore/node_modules/bitcore-message/node_modules/bitcore-lib
+
+# Create Symblinks due to diferent versions of bitcore-lib installed by bitcore..
+RUN ln -s /usr/lib/node_modules/bitcore/node_modules/bitcore-lib /usr/lib/node_modules/bitcore/node_modules/insight-api/node_modules/bitcore-lib
 
 
 #Upgrade bitcoind for supporting segwit
