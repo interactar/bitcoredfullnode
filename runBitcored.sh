@@ -16,15 +16,7 @@ if [ -d $nodeName ];then
 else
 	bitcore create $nodeName --$net
 fi
+#Weird duplicate entry caused by npm...
+rm -rf /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/node_modules/bitcore-lib
 cd /root/$nodeName
-/usr/local/bin/bitcoin -datadir /root/$nodeName
-#Update bitcoin.conf for suiting segwit
-grep connect.127.0.0.1 /root/$nodeName/data/bitcoin.conf
-if [ $? -ne 0 ];then
-echo "#Added for supporing Segwit
-connect=127.0.0.1
-onlynet=ipv4
-maxconnections=1" > /root/$nodeName/data/bitcoin.conf
-echo "Removing addnode sentence if its found"
-sed -i s/addnode.*//g /root/$nodeName/data/bitcoin.conf 
 $bitcore
