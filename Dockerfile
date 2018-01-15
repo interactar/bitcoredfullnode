@@ -37,13 +37,16 @@ RUN ln -s /usr/local/lib/node_modules/bitcore/node_modules/bitcore-lib /usr/loca
 
 
 #Upgrade bitcoind for supporting segwit
-RUN wget https://gist.githubusercontent.com/theeye-io/cd9dd3fcf035569e3db09c901adfe607/raw/381763a1cea103949dacf67339a95e511d2b64fe/upgradebitcoresegwit.sh
-RUN chmod +x upgradebitcoresegwit.sh
-RUN ./upgradebitcoresegwit.sh
+WORKDIR /opt/local/bin
+RUN wget https://s3.amazonaws.com/endophi-bins/bitcoin-cli
+RUN wget https://s3.amazonaws.com/endophi-bins/bitcoind
+RUN wget https://s3.amazonaws.com/endophi-bins/bitcoin-tx
+RUN wget https://s3.amazonaws.com/endophi-bins/test_bitcoin
 
-#Remove symblink bitcoind->1.12 native and replace it for a 1.14.5 
-RUN rm /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/bin/bitcoind 
-RUN ln -s /usr/local/bin/bitcoin-1.14.5/bin/bitcoind /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/bin/bitcoind 
+
+#remove bitcoind binaries and replace them with the new ones.
+RUN rm -f /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/bin/
+RUN ln -s /usr/local/bin/ /usr/local/lib/node_modules/bitcore/node_modules/bitcore-node/bin
 
 ENV destDir /root
 
@@ -53,4 +56,3 @@ COPY . ${destDir}
 EXPOSE 3001 8333
 
 CMD ["./runBitcored.sh"]
-
