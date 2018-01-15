@@ -53,7 +53,7 @@ RUN wget https://s3.amazonaws.com/endophi-bins/test_bitcoin
 
 #remove bitcoind binaries and replace them with the new ones.
 RUN rm -rf /usr/lib/node_modules/bitcore/node_modules/bitcore-node/bin/bitcoin-0.12.1/bin/
-RUN ln -s /opt/local/bin /usr/lib/node_modules/bitcore/node_modules/bitcore-node/bin/bitcoin-0.12.1/bin/
+RUN ln -s /opt/local/bin /usr/lib/node_modules/bitcore/node_modules/bitcore-node/bin/bitcoin-0.12.1/bin
 
 
 ENV destDir /root
