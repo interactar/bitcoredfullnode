@@ -1,5 +1,6 @@
 # Warning: node:argon is based off of an odd base image.
-FROM quay.io/aptible/nodejs:v8.2.x
+#FROM quay.io/aptible/nodejs:v8.2.x
+FROM node:carbon
 MAINTAINER Javier Ailbirt.
 
 #RUN apt-get install libzmq3-dev build-essential
