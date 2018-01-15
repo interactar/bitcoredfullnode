@@ -14,9 +14,9 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         curl \
         wget ca-certificates \
         libboost-all-dev \
+        libzmq3-dev \ 
+        build-essential \
     && rm -rf /var/lib/apt/lists/*
-
-RUN apt-get install libzmq3-dev build-essential
 
 # Install  libzmq3-dev lib which is not listed at wheezy debian packages.
 #RUN wget http://ftp.cl.debian.org/debian/pool/main/z/zeromq3/libzmq3-dev_3.2.3+dfsg-2~bpo70+1_amd64.deb \
