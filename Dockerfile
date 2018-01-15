@@ -15,9 +15,7 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         wget ca-certificates \
         libboost-all-dev \
         libzmq3-dev \ 
-        build-essential \
-        libdb4.8++ \
-    && rm -rf /var/lib/apt/lists/*
+        build-essential
 
 # Install  libzmq3-dev lib which is not listed at wheezy debian packages.
 #RUN wget http://ftp.cl.debian.org/debian/pool/main/z/zeromq3/libzmq3-dev_3.2.3+dfsg-2~bpo70+1_amd64.deb \
@@ -56,6 +54,20 @@ RUN chmod +x *
 #remove bitcoind binaries and replace them with the new ones.
 RUN rm -rf /usr/lib/node_modules/bitcore/node_modules/bitcore-node/bin/bitcoin-0.12.1/bin/
 RUN ln -s /opt/local/bin /usr/lib/node_modules/bitcore/node_modules/bitcore-node/bin/bitcoin-0.12.1/bin
+
+
+#Berkley Database
+RUN wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
+RUN tar xzvf db-4.8.30.NC.tar.gz
+RUN cd db-4.8.30.NC/build_unix/
+RUN ../dist/configure --enable-cxx
+RUN make
+RUN make install
+RUN ln -s /usr/local/BerkeleyDB.4.8 /usr/include/db4.8
+RUN ln -s /usr/include/db4.8/include/* /usr/include
+RUN ln -s /usr/include/db4.8/lib/* /usr/lib
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 
 ENV destDir /root
