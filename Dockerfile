@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
 #RUN rm -f *.deb
 
 # Using Ubuntu
-RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
 
 # Install Bitcore
