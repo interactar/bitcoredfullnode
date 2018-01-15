@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         libpgm-5.1.0 \
         curl \
         wget ca-certificates \
+        libboost-all-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Install  libzmq3-dev lib which is not listed at wheezy debian packages.
