@@ -1,6 +1,6 @@
 # Warning: node:argon is based off of an odd base image.
 #FROM quay.io/aptible/nodejs:v8.2.x
-FROM ubuntu:16.04
+FROM ubuntu:xenial
 MAINTAINER Javier Ailbirt.
 
 # Install base dependencies
