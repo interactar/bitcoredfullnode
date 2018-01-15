@@ -1,6 +1,6 @@
 # Warning: node:argon is based off of an odd base image.
 #FROM quay.io/aptible/nodejs:v8.2.x
-FROM node:carbon
+FROM ubuntu:16.04
 MAINTAINER Javier Ailbirt.
 
 #RUN apt-get install libzmq3-dev build-essential
@@ -19,11 +19,15 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Install  libzmq3-dev lib which is not listed at wheezy debian packages.
-RUN wget http://ftp.cl.debian.org/debian/pool/main/z/zeromq3/libzmq3-dev_3.2.3+dfsg-2~bpo70+1_amd64.deb \
-    && wget http://ftp.cl.debian.org/debian/pool/main/z/zeromq3/libzmq3_3.2.3+dfsg-2~bpo70+1_amd64.deb
+#RUN wget http://ftp.cl.debian.org/debian/pool/main/z/zeromq3/libzmq3-dev_3.2.3+dfsg-2~bpo70+1_amd64.deb \
+#    && wget http://ftp.cl.debian.org/debian/pool/main/z/zeromq3/libzmq3_3.2.3+dfsg-2~bpo70+1_amd64.deb
+#
+#RUN dpkg -i *.deb
+#RUN rm -f *.deb
 
-RUN dpkg -i *.deb
-RUN rm -f *.deb
+# Using Ubuntu
+RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+RUN apt-get install -y nodejs
 
 # Install Bitcore
 RUN npm install -g --unsafe-perm=true bitcore
