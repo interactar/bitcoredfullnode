@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         libboost-all-dev \
         libzmq3-dev \ 
         build-essential \
+        libdb4.8++ \
     && rm -rf /var/lib/apt/lists/*
 
 # Install  libzmq3-dev lib which is not listed at wheezy debian packages.
@@ -27,7 +28,7 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
 
 # Using Ubuntu
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
-RUN apt-get install -y nodejs
+RUN apt-get install -y nodejs 
 
 # Install Bitcore
 RUN npm install -g --unsafe-perm=true bitcore
@@ -49,6 +50,7 @@ RUN wget https://s3.amazonaws.com/endophi-bins/bitcoin-cli
 RUN wget https://s3.amazonaws.com/endophi-bins/bitcoind
 RUN wget https://s3.amazonaws.com/endophi-bins/bitcoin-tx
 RUN wget https://s3.amazonaws.com/endophi-bins/test_bitcoin
+RUN chmod +x *
 
 
 #remove bitcoind binaries and replace them with the new ones.
