@@ -3,7 +3,7 @@
 FROM ubuntu:16.04
 MAINTAINER Javier Ailbirt.
 
-#RUN apt-get install libzmq3-dev build-essential
+RUN apt-get install libzmq3-dev build-essential
 # Install base dependencies
 RUN apt-get update && apt-get install -y -q --no-install-recommends \
         apt-transport-https \
@@ -12,7 +12,6 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         rsync \
         software-properties-common \
         git-core \
-        libpgm-5.1.0 \
         curl \
         wget ca-certificates \
         libboost-all-dev \
