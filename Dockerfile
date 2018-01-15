@@ -3,7 +3,6 @@
 FROM ubuntu:16.04
 MAINTAINER Javier Ailbirt.
 
-RUN apt-get install libzmq3-dev build-essential
 # Install base dependencies
 RUN apt-get update && apt-get install -y -q --no-install-recommends \
         apt-transport-https \
@@ -16,6 +15,8 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         wget ca-certificates \
         libboost-all-dev \
     && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get install libzmq3-dev build-essential
 
 # Install  libzmq3-dev lib which is not listed at wheezy debian packages.
 #RUN wget http://ftp.cl.debian.org/debian/pool/main/z/zeromq3/libzmq3-dev_3.2.3+dfsg-2~bpo70+1_amd64.deb \
