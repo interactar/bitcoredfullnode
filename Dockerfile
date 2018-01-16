@@ -57,9 +57,10 @@ RUN ln -s /opt/local/bin /usr/lib/node_modules/bitcore/node_modules/bitcore-node
 
 
 #Berkley Database
+WORKDIR /src
 RUN wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
 RUN tar xzvf db-4.8.30.NC.tar.gz
-RUN cd db-4.8.30.NC/build_unix/
+WORKDIR /src/db-4.8.30.NC/build_unix/
 RUN ../dist/configure --enable-cxx
 RUN make
 RUN make install
