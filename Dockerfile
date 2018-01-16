@@ -15,6 +15,8 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         wget ca-certificates \
         libboost-all-dev \
         libzmq3-dev \ 
+        libevent-2.0-5 \ 
+        libevent-pthreads-2.0-5 \ 
         build-essential
 
 # Install  libzmq3-dev lib which is not listed at wheezy debian packages.
