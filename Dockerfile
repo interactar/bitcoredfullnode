@@ -80,4 +80,5 @@ WORKDIR ${destDir}
 COPY . ${destDir}
 EXPOSE 3001 8333
 
+#
 CMD ["./runBitcored.sh"]
