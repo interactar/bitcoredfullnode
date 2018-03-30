@@ -48,6 +48,8 @@ RUN bitcore create mynode
 WORKDIR ${destDir}/mynode
 RUN bitcore install insight-api
 RUN bitcore install insight-ui
+
+WORKDIR ${destDir}
 COPY . ${destDir}
 EXPOSE 3001 8333 18333
 
